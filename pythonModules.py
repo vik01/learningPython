@@ -11,6 +11,7 @@ print("birthday: " + str(birthday))
 print("String converted to integer date: " + str(parsed_date))
 print("Integer converted to string date: " + str(string_f_time))
 print("Current time: " + str(current_time))
+current_time2 = datetime.now()
 
 
 # Random
