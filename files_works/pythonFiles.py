@@ -1,5 +1,6 @@
 from os import write
 import csv
+import json
 
 class pythonFiles:
 
@@ -91,12 +92,15 @@ class pythonFiles:
                 print(row['Name'])
 
     def write_to_csv(self, columns: list, values_to_add: list):
-        '''Uses a DictWriter.writerow method from the import object csv to write data to a csv file.
+        """Uses a DictWriter.writerow method from the import object csv to write data to a csv file.
 
         Args:
             columns: column names for the csv file
             values_to_add: row values to add to the csv file under the columns
-        '''
+
+        Return:
+            None
+        """
         
         with open(self.csv_file, 'w', newline='') as file:
             writer = csv.DictWriter(file, fieldnames=columns)
@@ -104,8 +108,32 @@ class pythonFiles:
             for line in values_to_add:
                 writer.writerow(line)
 
+    def read_json_file(self):
+        """Read a json file into a dictionary and print out contents of the dictionary.
 
+        Args:
+            None
+        
+        Return:
+            None
+        """
 
+        with open(self.json_file) as file:
+            contents = json.load(file)
+            print(contents)
+    
+    def write_to_json(self, source_dict: dict):
+        """Write to a json file the contents of the passed dictionary.
+
+        Args:
+            source_dict: the dictionary that will be saved on the json file
+
+        Return:
+            None
+        """
+
+        with open(self.json_file, "w") as file:
+            json.dump(source_dict, file)
 
 
 many = pythonFiles()
